@@ -20,9 +20,10 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = auth()->user()->projects;
-
+        $tasks = auth()->user()->tasks;
         return view('/projects/index', [
-            'projects' => $projects
+            'projects' => $projects,
+            'tasks' => $tasks
         ]);
     }
 
@@ -51,11 +52,14 @@ class ProjectController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Project  $project
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show(Project $project)
     {
-        return view('/projects/show');
+        return view('/projects/show',[
+            'tasks' => $project->tasks(),
+            'project' => $project
+        ]);
     }
 
     /**
@@ -66,7 +70,9 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('/projects/edit');
+        return view('/projects/edit', [
+            'project' => $project
+        ]);
     }
 
     /**

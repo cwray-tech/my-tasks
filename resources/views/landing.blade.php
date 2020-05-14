@@ -41,6 +41,7 @@
 
         .content {
             text-align: center;
+            padding: 10px;
         }
 
         .title {
@@ -67,7 +68,7 @@
     @if (Route::has('login'))
         <div class="top-right links">
             @auth
-                <a href="{{ url('/home') }}">Home</a>
+                <a href="{{ url('/projects') }}">Projects & Tasks</a>
             @else
                 <a href="{{ route('login') }}">Login</a>
 
@@ -83,8 +84,8 @@
             MyTasks
         </div>
 
-        <div class="links">
-            Sign up for an account and start tackling your tasks!
+        <div>
+            <a href="/register">Sign up</a> for an account and start tackling your tasks!
         </div>
     </div>
 </div>

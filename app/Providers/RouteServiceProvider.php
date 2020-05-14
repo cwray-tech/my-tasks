@@ -17,11 +17,11 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace = 'App\Http\Controllers';
 
     /**
-     * The path to projects. This is where users are redirected to after login.
+     * The path to the "home" route for your application.
      *
      * @var string
      */
-    public const Projects = '/projects';
+    public const HOME = '/projects';
 
     /**
      * Define your route model bindings, pattern filters, etc.

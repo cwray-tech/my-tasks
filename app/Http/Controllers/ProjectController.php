@@ -7,14 +7,23 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
-     * Display a listing of the resource.
+     * Display users projects.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $projects = auth()->user()->projects;
+
+        return view('/projects/index', [
+            'projects' => $projects
+        ]);
     }
 
     /**
@@ -24,7 +33,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('/projects/create');
     }
 
     /**
@@ -46,7 +55,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('/projects/show');
     }
 
     /**
@@ -57,7 +66,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('/projects/edit');
     }
 
     /**

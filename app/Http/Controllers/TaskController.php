@@ -7,14 +7,23 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
-     * Display a listing of the resource.
+     * Display all the users tasks.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $tasks = auth()->user()->tasks;
+
+        return view('/tasks/index', [
+            'tasks' => $tasks
+        ]);
     }
 
     /**
@@ -24,7 +33,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        //
+        return view('/tasks/create');
     }
 
     /**
@@ -46,7 +55,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return view('/tasks/show');
     }
 
     /**
@@ -57,7 +66,7 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        return view('tasks/edit');
     }
 
     /**

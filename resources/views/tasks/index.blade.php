@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="h1">Your Tasks</h1>
-    <div class="card bg-white mt-4">
+    <div class="card bg-white mt-3">
         <div class="card-body">
             <div class="d-flex align-items-baseline">
                 <h2 class="card-title">All Tasks</h2>
@@ -12,7 +12,7 @@
         </div>
     </div>
     <h2 class="h2 mt-4">Your Projects</h2>
-    <div class="card-columns">
+    <div class="card-columns mt-3">
         @forelse($projects as $project)
             <div class="card">
                 <div class="card-body">

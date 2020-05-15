@@ -15,8 +15,8 @@
                 <textarea class="form-control" id="description" name="description" rows="4">{{ old('description') }}</textarea>
             </div>
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="completed">
-                <label class="form-check-label" name="completed" for="completed">Are you finished with this project?</label>
+                <input type="checkbox" value="1" name="completed" class="form-check-input" id="completed">
+                <label class="form-check-label" for="completed">Are you finished with this project?</label>
             </div>
             <button type="submit" class="btn btn-primary">Create Project!</button>
         </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Task;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -21,7 +22,7 @@ class TaskController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $tasks = $user->tasks;
+        $tasks = DB::table('tasks')->where('user_id', '=', auth()->user()->id)->orderBy('priority', 'asc')->get();
         $projects = $user->projects;
 
         return view('/tasks/index', [
@@ -72,6 +73,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
+
         return view('/tasks/show', [
             'task' => $task
         ]);
@@ -113,6 +115,7 @@ class TaskController extends Controller
 
         return redirect('/tasks');
     }
+
 
     /**
      * Remove the specified resource from storage.

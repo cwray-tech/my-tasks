@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -21,7 +22,8 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = auth()->user()->projects;
-        $tasks = auth()->user()->tasks;
+        $tasks = DB::table('tasks')->where('user_id', '=', auth()->user()->id)->orderBy('priority', 'asc')->get();
+
         return view('/projects/index', [
             'projects' => $projects,
             'tasks' => $tasks
@@ -69,9 +71,11 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        $tasks = DB::table('tasks')->where('project_id', '=', $project->id)->orderBy('priority', 'asc')->get();
+
         return view('/projects/show',[
-            'tasks' => $project->tasks,
-            'project' => $project
+            'project' => $project,
+            'tasks' => $tasks
         ]);
     }
 

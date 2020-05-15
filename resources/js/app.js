@@ -1,11 +1,12 @@
-import VueDraggable from 'vue-draggable'
+import TaskList from "./components/TaskList";
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
 
-Vue.use(VueDraggable);
+
+Vue.component('task-list', TaskList);
 
 const app = new Vue({
     el: '#app'

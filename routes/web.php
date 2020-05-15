@@ -24,3 +24,5 @@ Route::resource('/projects', 'ProjectController');
 
 //Here are all of the resource routes for tasks.
 Route::resource('/tasks', 'TaskController');
+
+Route::patch('/priority/update', 'PriorityController@update');

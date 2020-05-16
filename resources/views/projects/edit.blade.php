@@ -18,7 +18,34 @@
             <input type="checkbox" class="form-check-input" value="1" name="completed" id="completed">
             <label class="form-check-label" for="completed">Are you finished with this project?</label>
         </div>
-        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <div class="d-flex align-items-baseline">
+            <button type="submit" class="btn btn-primary">Save Changes!</button>
+            <div class="btn btn-danger ml-auto" data-toggle="modal" data-target="#deleteTask">Delete Project</div>
+        </div>
     </form>
-
+    <!-- Modal to delete Task -->
+    <div class="modal fade" id="deleteTask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this project?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Project: {{ $project->name }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Close</button>
+                    <form id="deleteTask" action="/projects/{{ $project->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

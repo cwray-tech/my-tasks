@@ -72,10 +72,11 @@ class ProjectController extends Controller
     public function show(Project $project)
     {
         $tasks = DB::table('tasks')->where('project_id', '=', $project->id)->orderBy('priority', 'asc')->get();
-
+        $projects = auth()->user()->projects;
         return view('/projects/show',[
             'project' => $project,
-            'tasks' => $tasks
+            'tasks' => $tasks,
+            'projects' => $projects
         ]);
     }
 

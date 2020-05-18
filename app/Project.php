@@ -28,15 +28,4 @@ class Project extends Model
         return $this->hasMany(Task::class);
     }
 
-
-    /**
-     * Code to complete a project.
-     *
-     */
-    public function complete()
-    {
-        $this->update([
-            'completed' => '1'
-        ]);
-    }
 }

@@ -27,16 +27,4 @@ class Task extends Model
     {
         return $this->belongsTo(Project::class);
     }
-
-
-    /**
-     * Code to complete a task.
-     *
-     */
-    public function complete()
-    {
-        $this->update([
-            'completed' => '1'
-        ]);
-    }
 }

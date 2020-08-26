@@ -16,3 +16,9 @@ In order to start using the app, you will need to do a few things.
 5. Run composer install.
 6. Run php artisan migrate, then visit your application at your configured website domain!
 
+## What technologies?
+
+- Laravel 6
+- php 7.2
+- Bootstrap 4
+- VueJs 2
